@@ -11,7 +11,9 @@ Altere as suas credenciais em .env para o acesso ao banco de dados
 
 > docker-compose up
 
-Para aceso as rotas basta utilizar um API CLIENT como postman ou insomnia.
+E o servidor web será iniciado 
+
+Para acesso as rotas basta utilizar um API CLIENT como postman ou insomnia.
 
 ### Directory Structure
 
@@ -30,10 +32,7 @@ User:
 
     - create: post '/user'
     - listAll: get '/user'
-    - list by team: get '/user/:team'
-    - list by sport: get '/user/:sport'
-    - list by country: get '/user/:country'
-    - list a single user get '/user/:id'
+    - list a single user: get '/user/:id'
     - update: post '/user/edit/:id'
     - delete: delete '/user/:id'
 
