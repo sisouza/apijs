@@ -1,0 +1,45 @@
+version: "3.0"
+
+services:
+  api:
+    container_name: apijs
+    command: npm run dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    volumes:
+      - .:/home/node/apijs
+      - /home/node/apijs/node_modules
+    environment:
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_HOST=$DB_HOST
+    entrypoint:
+      - /bin/sh
+      - ./init.sh
+    depends_on:
+      - db
+    networks:
+      - api-connection
+    ports:
+      - 3001:3001
+
+  db:
+    container_name: postgresdb
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_DB=$DATABASE
+    ports:
+      - 5432:5432
+    networks:
+      - api-connection
+    volumes:
+      - ./data/postgres:/var/lib/postgresdb/data
+
+networks:
+  api-connection:
+    driver: bridge
