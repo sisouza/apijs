@@ -1,11 +1,12 @@
 const express = require("express");
-const app = express();
-const router = require("./src/routes/routes");
+const routes = require("./src/routes/routes");
 require("dotenv").config();
 
+const app = express();
 app.use(express.json());
-app.use("/", router);
+app.use(express.urlencoded({extended: true}));
 
-const PORT = process.env.PORT || 5000;
+app.use("/", routes);
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => console.log("server running on port " + PORT));
