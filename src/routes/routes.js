@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const UserController = require("../controllers/UserController");
+const GenreController = require("../controllers/GenreController");
 //const MovieController = require("../controllers/MovieController");
 
 const router = Router();
@@ -12,8 +13,14 @@ router.get('/user', UserController.getAll);
 router.get('/user/:id', UserController.getById);
 router.put('/user/edit/:id', UserController.update);
 router.delete('/user/:id', UserController.remove);
-//movies routes
 //genre routes
+router.post('/genre', GenreController.create);
+router.get('/genre', GenreController.getAll);
+router.get('/genre/:id', GenreController.getById);
+router.put('/genre/edit/:id', GenreController.update);
+router.delete('/genre/:id', GenreController.remove);
+//movies routes
+
 
 
 module.exports = router;
