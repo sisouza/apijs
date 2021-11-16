@@ -7,7 +7,7 @@ class UserService {
         const findUser = await User.findOne({ where: { email: userData.email}});
         
         if (findUser > 1) {
-            return false;
+            return 'User already registered in database';
         }
 
         const user = await User.create(userData);
@@ -20,7 +20,7 @@ class UserService {
         const userExists = await User.findByPk(idUser);
         
         if (!userExists) {
-            return false;
+            return 'User does not exists in database';
         }
         
         const user = User.findAll({ where: { id: idUser}});
@@ -65,7 +65,7 @@ class UserService {
         const userExists = await User.findByPk(userId);
 
         if (!userExists) {
-            return false;
+            return 'User does not exist in database';
         }
        
         const remove = await User.destroy({where:{id:userId }})

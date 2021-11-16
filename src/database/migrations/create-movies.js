@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      sinpose: {
+      sinopse: {
         allowNull: false,
         type: Sequelize.TEXT,
         unique: true,

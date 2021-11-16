@@ -7,7 +7,7 @@ class GenreService {
         const findGenre = await Genre.findOne({ where: { name: genreData.name}});
         
         if (findGenre > 1) {
-            return false;
+            return 'genre already registered';
         } 
 
         const genre = await Genre.create(genreData);

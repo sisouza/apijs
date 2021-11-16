@@ -9,7 +9,7 @@ const Genre = db.define("genres", {
   },
   name: Sequelize.STRING,
 },{
-  freezeTableName: false,
+  freezeTableName: true,
 });
 module.exports = Genre;
 

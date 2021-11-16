@@ -8,7 +8,7 @@ class MovieService {
         const findMovie = await Movie.findOne({ where: { name: MovieData.name}});
         
         if (findMovie > 1) {
-            return false;
+            return 'Movie already registered';
         }
 
         const movie = await Movie.create(MovieData);
@@ -21,7 +21,7 @@ class MovieService {
         const movieExists = await Movie.findByPk(idMovie);
         
         if (!movieExists) {
-            return false;
+            return 'Movie does not exist in database';
         }
         
        const movie = Movie.findAll({ where: { id: idMovie } }, { include: ["genre"] });
