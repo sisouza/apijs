@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../config/db.js");
-const Genre = require("../models/Genre")
+
 
 const Movie = db.define("movies", {
   id: {
@@ -16,11 +16,6 @@ const Movie = db.define("movies", {
 },{
   freezeTableName: false,
 });
-
-Movie.belongsTo(Genre, {
-    foreignKey: 'genreId',
-    targetKey: 'differentUniqueAttribute'
-})
 
 module.exports = Movie;
 

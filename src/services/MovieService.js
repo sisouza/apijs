@@ -5,7 +5,7 @@ class MovieService {
 
     async register(MovieData) {
 
-        const findMovie = await Movie.findOne({ where: { email: MovieData.email}});
+        const findMovie = await Movie.findOne({ where: { name: MovieData.name}});
         
         if (findMovie > 1) {
             return false;
@@ -31,7 +31,7 @@ class MovieService {
 
 
     async getAll() {
-        const listMovies = await Movie.indAll({include: ["genre"]});
+        const listMovies = await Movie.findAll({include: ["genre"]});
 
         if (!listMovies) {
             return 'unable to list Movies';
@@ -39,20 +39,24 @@ class MovieService {
         return listMovies;
     }
 
-    async update(id, Movie) {
+    async update(id, movieData) {
 
-        const MovieExists =  await Movie.findByPk(id);
+        const movieExists =  await Movie.findByPk(id);
         
-        if (!MovieExists) {
+        if (!movieExists) {
             return 'Could Not Find Movie to edit';
         }
 
         const updateMovie = {
-            fullname: Movie.fullname,
-            email: Movie.email,               
+            name: movieData.name,
+            sinopse: movieData.sinopse,  
+            year: movieData.year,
+            poster: movieData.poster,
+            box_office: movieData.box_office,
+            genreId: movieData.genreId
          };
          
-        const update = await  Movie.update(updateMovie, { where: { id: id } });
+        const update = await Movie.update(updateMovie, { where: { id: id } });
          
         if (!update) {
             return 'Could not update Movie';
@@ -60,16 +64,16 @@ class MovieService {
          
         return update;
         
-     }
+    }
 
-   async remove(MovieId) {
-        const MovieExists = await Movie.findByPk(MovieId);
+   async remove(movieId) {
+        const movieExists = await Movie.findByPk(movieId);
 
-        if (!MovieExists) {
+        if (!movieExists) {
             return false;
         }
        
-        const remove = await Movie.destroy({where:{id:MovieId }})
+        const remove = await Movie.destroy({where:{id: movieId }})
         
        if (!remove) {
            return 'Movie could not be deleted'
