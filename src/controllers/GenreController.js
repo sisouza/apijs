@@ -28,7 +28,6 @@ class GenreController{
     }
 
     /**
-     * 
      * @param req 
      * id: @String
      * @param {*} res 

@@ -22,7 +22,7 @@ class GenreService {
             return false;
         }
         
-        const genre = genre.findAll({ where: { id: idGenre}});
+        const genre = Genre.findAll({ where: { id: idGenre}});
 
         return genre;
     }
@@ -46,8 +46,7 @@ class GenreService {
         }
 
         const updateGenre = {
-            fullname: genre.fullname,
-            email: genre.email,               
+            name: genre.name              
          };
          
         const update = await Genre.update(updateGenre, { where: { id: id } });
