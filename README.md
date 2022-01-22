@@ -1,5 +1,6 @@
-Repositório contendo o backend do projeto
 Um sistema de cadastro de filmes e usuários utilizando uma API Nodejs, Express, banco de dados Postgres e a ORM Sequelize.
+Feito para o desafio final do treinamento oferecido pelo Instituto Eldorado.
+Repositório contendo o backend do projeto que consiste em uma rest api para uma aplicação de filmes.
 
 ### Setup
 
